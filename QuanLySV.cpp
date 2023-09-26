@@ -342,27 +342,28 @@ public:
         cout << "Diem trung binh toan bo sinh vien: " << diemTong / tongSoSinhVien << endl;
         cout << "Tuoi trung binh: " << (double)tongTuoi / tongSoSinhVien << endl;
     }
-    // // toString
-    // string toString()
-    // {
-    //     return node.sinhvien.hoTen + ", " + node.sinhvien.MSSV + ", " + to_string(node.sinhvien.Tuoi) + ", " + to_string(node.sinhvien.Diem);
-    // }
-    // // sao luu
-    // void
-    // save()
-    // {
-    //     string filename = "C:/Users/Phat/Desktop/QLSV.txt";
-    //     ofstream file(filename);
-    //     Node *cur = head;
-    //     while (cur != NULL)
-    //     { /*
-    //          file << cur->sinhvien.hoTen << endl;
-    //          file << cur->sinhvien.MSSV << endl;
-    //          file << cur->sinhvien.Tuoi << endl;
-    //          file << cur->sinhvien.Diem << endl;*/
+    void save()
+    {
+        string filename = "C:/Users/Phat/Desktop/QLSV.txt";
+        ofstream file(filename);
+        if (file.is_open())
+        {
+            Node *cur = head;
+            while (cur != NULL)
+            {
+                file << cur->sinhvien.hoTen << endl;
+                file << cur->sinhvien.MSSV << endl;
+                file << cur->sinhvien.Tuoi << endl;
+                file << cur->sinhvien.Diem << endl;
 
-    //         cur = cur->next;
-    //     }
+                cur = cur->next;
+            }
+            file.close();
+            cout << "Danh sach sinh vien da duoc luu" << filename << endl;
+        }
+        else
+            cout << "Khong the luu danh sach sinh vien" << endl;
+    }
 };
 
 int main()
@@ -446,7 +447,7 @@ int main()
         break;
         case 8:
         {
-            // QuanLySV.save();
+            QuanLySV.save();
         }
         break;
         case 9:
