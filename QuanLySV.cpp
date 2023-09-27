@@ -344,16 +344,16 @@ public:
     }
     void save()
     {
-        string filename = "C:/Users/Phat/Desktop/QLSV.txt";
+        string filename = "QLSV.txt";
         ofstream file(filename);
         if (file.is_open())
         {
             Node *cur = head;
             while (cur != NULL)
             {
-                file << cur->sinhvien.hoTen << endl;
-                file << cur->sinhvien.MSSV << endl;
-                file << cur->sinhvien.Tuoi << endl;
+                file << cur->sinhvien.hoTen << ", ";
+                file << cur->sinhvien.MSSV << ", ";
+                file << cur->sinhvien.Tuoi << ", ";
                 file << cur->sinhvien.Diem << endl;
 
                 cur = cur->next;
