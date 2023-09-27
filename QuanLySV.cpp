@@ -2,6 +2,7 @@
 #include <string>
 #include <iomanip>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -351,9 +352,9 @@ public:
             Node *cur = head;
             while (cur != NULL)
             {
-                file << cur->sinhvien.hoTen << ", ";
-                file << cur->sinhvien.MSSV << ", ";
-                file << cur->sinhvien.Tuoi << ", ";
+                file << cur->sinhvien.hoTen << ",";
+                file << cur->sinhvien.MSSV << ",";
+                file << cur->sinhvien.Tuoi << ",";
                 file << cur->sinhvien.Diem << endl;
 
                 cur = cur->next;
@@ -363,6 +364,33 @@ public:
         }
         else
             cout << "Khong the luu danh sach sinh vien" << endl;
+    }
+    void load()
+    {
+        string filename = "QLSV.txt";
+        ifstream file(filename);
+        // Check if the file is open
+        if (!file.is_open())
+        {
+            cerr << "Failed to open " << filename << std::endl;
+            return; // Exit with an error code
+        }
+
+        // Read and print the contents line by line
+        char delimiter = ',';
+        string line;
+        while (getline(file, line))
+        {
+            istringstream ss(line);
+            string x;
+            while (getline(ss, x, delimiter))
+            {
+                cout << x << endl;
+            }
+        }
+
+        // Close the file
+        file.close();
     }
 };
 
